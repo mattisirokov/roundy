@@ -41,7 +41,9 @@
   "author": "Marko Trebizan",
   "module": "dist/roundy.esm.js",
   "devDependencies": {
-    "@babel/core": "^7.8.7",
+    "@babel/core": "^7.22.1",
+    "@babel/preset-env": "^7.22.4",
+    "@babel/preset-react": "^7.22.3",
     "@storybook/addon-actions": "^5.3.17",
     "@storybook/addon-links": "^5.3.17",
     "@storybook/addons": "^5.3.17",

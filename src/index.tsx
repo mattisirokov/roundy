@@ -75,10 +75,16 @@ function Roundy(optProps: MainRoundyProps) {
   });
 
   const bind = useDrag(({ down, xy: [x, y] }) => {
-    setValueAndAngle(x, y, !down ? newState => {
-      isDrag.current = down
-      onAfterChange && onAfterChange(newState, props);
-    } : undefined);
+    setValueAndAngle(
+      x,
+      y,
+      !down
+        ? (newState) => {
+            isDrag.current = down;
+            onAfterChange && onAfterChange(newState, props);
+          }
+        : undefined
+    );
   });
 
   React.useEffect(() => {
@@ -92,7 +98,7 @@ function Roundy(optProps: MainRoundyProps) {
   }, [props.value]);
 
   const setState = (obj: Partial<StateType>) =>
-    setAll(prev => ({ ...prev, ...obj }));
+    setAll((prev) => ({ ...prev, ...obj }));
   const { angle } = state;
   const segments = steps || (stepSize ? Math.floor((max - min) / stepSize) : 0);
   const maskName = `${classNamePrefix}_${uniqueId}`;
@@ -119,9 +125,9 @@ function Roundy(optProps: MainRoundyProps) {
     onChange && onChange(value, props);
   };
 
-  const updateOnClick = event => {
+  const updateOnClick = (event) => {
     if (isDrag.current) {
-      return
+      return;
     }
     const { clientX, clientY } = event;
     let eX = clientX,
@@ -129,9 +135,12 @@ function Roundy(optProps: MainRoundyProps) {
 
     eX = clientX;
     eY = clientY;
-    setValueAndAngle(eX, eY, newState => {
-      onAfterChange && onAfterChange(newState, props);
-    });
+
+    setTimeout(() => {
+      setValueAndAngle(eX, eY, (newState) => {
+        onAfterChange && onAfterChange(newState, props);
+      });
+    }, 200); // 200ms delay
   };
 
   const getMaskLine = (segments: number, index: number) => {
