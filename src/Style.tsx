@@ -22,7 +22,7 @@ const Style = styled.div`
       height: 20px;
       border-radius: 100%;
       position: absolute;
-      right: -1px;
+      right: -10px;
       background: #cabd98;
       border: 1px solid #ccc;
       top: -10px;
