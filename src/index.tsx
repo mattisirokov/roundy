@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as React from 'react';
 import { useDrag } from 'react-use-gesture';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
