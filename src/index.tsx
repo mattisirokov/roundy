@@ -144,11 +144,9 @@ function Roundy(optProps: MainRoundyProps) {
     eX = clientX;
     eY = clientY;
 
-    setTimeout(() => {
-      setValueAndAngle(eX, eY, (newState) => {
-        onAfterChange && onAfterChange(newState, props);
-      });
-    }, 200); // 200ms delay
+    setValueAndAngle(eX, eY, (newState) => {
+      onAfterChange && onAfterChange(newState, props);
+    });
   };
 
   const getMaskLine = (segments: number, index: number) => {
