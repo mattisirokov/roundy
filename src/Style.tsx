@@ -18,8 +18,8 @@ const Style = styled.div`
     &:after {
       content: '';
       display: block;
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
       border-radius: 100%;
       position: absolute;
       right: -15px;
