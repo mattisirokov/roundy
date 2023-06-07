@@ -1,7 +1,7 @@
 // @ts-nocheck
 import * as React from 'react';
 import { useDrag } from 'react-use-gesture';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring, animate } from 'framer-motion';
 import hexoid from 'hexoid';
 import Style from './Style';
 import { InternalRoundyProps } from 'types';
@@ -72,6 +72,24 @@ function Roundy(optProps: MainRoundyProps) {
   const isDrag = React.useRef(false);
 
   const angleMotion = useMotionValue(valueToAngle(props.value, props));
+
+  // Start an animation when the value or props change
+  React.useEffect(() => {
+    const controls = animate(
+      angleMotion.get(),
+      valueToAngle(props.value, props),
+      {
+        type: 'tween', // this indicates a non-physics-based, time-based transition
+        duration: 0.5, // this is the length of the animation in seconds
+        // you can also specify an easing function, such as easeInOut, easeIn, etc.
+        ease: 'easeInOut',
+      }
+    );
+
+    // Stop the animation if the components unmounts, value, or props change
+    return controls.stop;
+  }, [angleMotion, props.value, props]);
+
   const angleSpring = useSpring(angleMotion, {
     damping: 100,
     stiffness: 10,
