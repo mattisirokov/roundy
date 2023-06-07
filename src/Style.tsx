@@ -16,7 +16,7 @@ const Style = styled.div`
     top: 50%;
     transform-origin: 0 50%;
     &:after {
-      content: '';
+      content: ' ';
       display: block;
       width: 20px;
       height: 20px;
