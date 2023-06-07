@@ -140,7 +140,7 @@ function Roundy(optProps: MainRoundyProps) {
       setValueAndAngle(eX, eY, (newState) => {
         onAfterChange && onAfterChange(newState, props);
       });
-    }, 300); // increase this delay if needed
+    }, 1000); // increase this delay if needed
   };
 
   const getMaskLine = (segments: number, index: number) => {
