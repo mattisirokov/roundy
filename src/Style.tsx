@@ -18,11 +18,15 @@ const Style = styled.div`
     &:after {
       content: '';
       display: block;
-      background: #cabd98;
-      border-radius: 100%;
-      height: 30px;
       width: 30px;
-      right: -15px;
+      height: 30px;
+      border-radius: 30px;
+      position: absolute;
+      right: 3px;
+      background: linear-gradient(to top, #fff, #f2f2f2);
+      border: 1px solid #ccc;
+      top: -10px;
+      transform: all ease 0.4s;
     }
     &:hover:after {
       box-shadow: 0 0 10px rgb(37, 205, 247);
