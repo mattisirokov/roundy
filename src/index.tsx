@@ -142,9 +142,15 @@ function Roundy(optProps: MainRoundyProps) {
     const { left, top } = getCenter(_wrapper, radius);
     const dX = x - left;
     const dY = y - top;
-    const { value, angle } = stepRounding(getAngle(dY, dX, rotationOffset));
+    let { value, angle } = stepRounding(getAngle(dY, dX, rotationOffset));
+
+    // Limit angle
+    angle = Math.max(0, Math.min(angle, arcSize));
+    // Recalculate value based on limited angle
+    value = angleToValue(angle, props);
+
     const newState = { value, angle };
-    angleMotion.set(angle); // replace your state update with this
+    angleMotion.set(angle);
     if (cb) {
       cb(newState);
     }
