@@ -16,17 +16,17 @@ const Style = styled.div`
     top: 50%;
     transform-origin: 0 50%;
     &:after {
-      content: ' ';
+      content: '';
       display: block;
-      width: 20px;
-      height: 20px;
-      border-radius: 20px;
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
       position: absolute;
       right: 3px;
-      background: #cabd98;
+      background: linear-gradient(to top, #fff, #f2f2f2);
       border: 1px solid #ccc;
       top: -10px;
-      transition: all ease 0.4s;
+      transform: all ease 0.4s;
     }
     &:hover:after {
       box-shadow: 0 0 10px rgb(37, 205, 247);
