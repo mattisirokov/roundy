@@ -63,6 +63,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "framer-motion": "^10.12.16",
     "hexoid": "^1.0.0",
     "react-use-gesture": "^7.0.5"
   }
