@@ -20,9 +20,9 @@ const Style = styled.div`
       display: block;
       width: 20px;
       height: 20px;
-      border-radius: 100%;
+      border-radius: 20px;
       position: absolute;
-      right: -10px;
+      right: 3px;
       background: #cabd98;
       border: 1px solid #ccc;
       top: -10px;
