@@ -259,7 +259,7 @@ function Roundy(optProps: MainRoundyProps) {
           </svg>
           <motion.div
             ref={_handle}
-            className="sliderHandle:after"
+            className="sliderHandle"
             {...bind()}
             style={{
               transform: `rotate(${angle + rotationOffset}deg) scaleX(-1)`,
