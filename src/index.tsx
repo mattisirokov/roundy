@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useDrag } from 'react-use-gesture';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import hexoid from 'hexoid';
 import Style from './Style';
 import { InternalRoundyProps } from 'types';
@@ -69,6 +70,12 @@ function Roundy(optProps: MainRoundyProps) {
   const _handle = React.useRef(null);
   const isDrag = React.useRef(false);
 
+  const angleMotion = useMotionValue(valueToAngle(props.value, props));
+  const angleSpring = useSpring(angleMotion, {
+    damping: 10,
+    stiffness: 100,
+  });
+
   const [state, setAll] = React.useState<StateType>({
     value: props.value,
     angle: valueToAngle(props.value, props),
@@ -118,7 +125,7 @@ function Roundy(optProps: MainRoundyProps) {
     const dY = y - top;
     const { value, angle } = stepRounding(getAngle(dY, dX, rotationOffset));
     const newState = { value, angle };
-    setState(newState);
+    angleMotion.set(angle); // replace your state update with this
     if (cb) {
       cb(newState);
     }
@@ -136,11 +143,9 @@ function Roundy(optProps: MainRoundyProps) {
     eX = clientX;
     eY = clientY;
 
-    setTimeout(() => {
-      setValueAndAngle(eX, eY, (newState) => {
-        onAfterChange && onAfterChange(newState, props);
-      });
-    }, 1000); // increase this delay if needed
+    setValueAndAngle(eX, eY, (newState) => {
+      onAfterChange && onAfterChange(newState, props);
+    });
   };
 
   const getMaskLine = (segments: number, index: number) => {
@@ -250,7 +255,7 @@ function Roundy(optProps: MainRoundyProps) {
               d={getArc(Math.min(angle, 359.9999), 0, props)}
             />
           </svg>
-          <div
+          <motion.div
             ref={_handle}
             className="sliderHandle"
             {...bind()}
