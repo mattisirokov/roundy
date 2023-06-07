@@ -91,8 +91,8 @@ function Roundy(optProps: MainRoundyProps) {
   }, [angleMotion, props.value, props]);
 
   const angleSpring = useSpring(angleMotion, {
-    damping: 100,
-    stiffness: 10,
+    damping: 10,
+    stiffness: 100,
   });
 
   const [state, setAll] = React.useState<StateType>({
