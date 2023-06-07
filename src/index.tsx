@@ -263,9 +263,7 @@ function Roundy(optProps: MainRoundyProps) {
             style={{
               transform: `rotate(${angle + rotationOffset}deg) scaleX(-1)`,
             }}
-          >
-            <Style />
-          </motion.div>
+          />
         </React.Fragment>
       )}
     </Style>
