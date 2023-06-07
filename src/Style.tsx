@@ -26,7 +26,7 @@ const Style = styled.div`
       background: #cabd98;
       border: 1px solid #ccc;
       top: -10px;
-      transform: all ease 0.4s;
+      transition: all ease 0.4s;
     }
     &:hover:after {
       box-shadow: 0 0 10px rgb(37, 205, 247);
