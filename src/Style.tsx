@@ -23,7 +23,7 @@ const Style = styled.div`
       border-radius: 100%;
       position: absolute;
       right: -10px;
-      background: #bada55;
+      background: #ffffff;
       border: 1px solid #ccc;
       top: -10px;
       transform: all ease 0.4s;
