@@ -1,7 +1,7 @@
 // @ts-nocheck
 import * as React from 'react';
 import { useDrag } from 'react-use-gesture';
-import { motion, useMotionValue, useSpring, animate } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import hexoid from 'hexoid';
 import Style from './Style';
 import { InternalRoundyProps } from 'types';
@@ -72,24 +72,6 @@ function Roundy(optProps: MainRoundyProps) {
   const isDrag = React.useRef(false);
 
   const angleMotion = useMotionValue(valueToAngle(props.value, props));
-
-  // Start an animation when the value or props change
-  React.useEffect(() => {
-    const controls = animate(
-      angleMotion.get(),
-      valueToAngle(props.value, props),
-      {
-        type: 'tween', // this indicates a non-physics-based, time-based transition
-        duration: 0.5, // this is the length of the animation in seconds
-        // you can also specify an easing function, such as easeInOut, easeIn, etc.
-        ease: 'easeInOut',
-      }
-    );
-
-    // Stop the animation if the components unmounts, value, or props change
-    return controls.stop;
-  }, [angleMotion, props.value, props]);
-
   const angleSpring = useSpring(angleMotion, {
     damping: 10,
     stiffness: 100,
@@ -142,15 +124,9 @@ function Roundy(optProps: MainRoundyProps) {
     const { left, top } = getCenter(_wrapper, radius);
     const dX = x - left;
     const dY = y - top;
-    let { value, angle } = stepRounding(getAngle(dY, dX, rotationOffset));
-
-    // Limit angle
-    angle = Math.max(0, Math.min(angle, arcSize));
-    // Recalculate value based on limited angle
-    value = angleToValue(angle, props);
-
+    const { value, angle } = stepRounding(getAngle(dY, dX, rotationOffset));
     const newState = { value, angle };
-    angleMotion.set(angle);
+    angleMotion.set(angle); // replace your state update with this
     if (cb) {
       cb(newState);
     }
