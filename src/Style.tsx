@@ -18,12 +18,12 @@ const Style = styled.div`
     &:after {
       content: '';
       display: block;
-      width: 20px;
-      height: 20px;
+      width: 30px;
+      height: 30px;
       border-radius: 100%;
       position: absolute;
       right: -15px;
-      background: #bada55;
+      background: #cabd98;
       border: 1px solid #ccc;
       top: -10px;
       transform: all ease 0.4s;
