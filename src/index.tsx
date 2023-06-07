@@ -262,9 +262,8 @@ function Roundy(optProps: MainRoundyProps) {
             ref={_handle}
             className="sliderHandle"
             {...bind()}
-            style={{
-              transform: `rotate(${angle + rotationOffset}deg) scaleX(-1)`,
-            }}
+            animate={{ rotate: angleSpring.get() + rotationOffset }}
+            style={{ scaleX: -1 }}
           />
         </React.Fragment>
       )}
