@@ -210,7 +210,6 @@ function Roundy(optProps: MainRoundyProps) {
           ? style
           : { ...(style || {}), pointerEvents: 'none' }
       }
-      overrideStyle={props.overrideStyle}
     >
       {render ? (
         <div
