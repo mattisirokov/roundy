@@ -11,7 +11,7 @@ const Style = styled.div`
   .sliderHandle {
     width: 50%;
     pointer-events: all;
-    position: absolute;
+    position: static;
     left: 50%;
     top: 50%;
     transform-origin: 0 50%;
@@ -23,7 +23,7 @@ const Style = styled.div`
       border-radius: 100%;
       position: absolute;
       right: -10px;
-      background: #cabd98;
+      background: #bada55;
       border: 1px solid #ccc;
       top: -10px;
       transform: all ease 0.4s;
