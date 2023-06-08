@@ -98,8 +98,11 @@ function Roundy(optProps: MainRoundyProps) {
 
   React.useEffect(() => {
     if (props.value !== state.value) {
-      const newAngle = valueToAngle(props.value, props);
-      angleMotion.set(newAngle);
+      const newState = {
+        value: props.value,
+        angle: valueToAngle(props.value, props),
+      };
+      setAll(newState);
     }
   }, [props.value]);
 
@@ -259,9 +262,7 @@ function Roundy(optProps: MainRoundyProps) {
             className="sliderHandle"
             {...bind()}
             style={{
-              transform: angleSpring.get()
-                ? `rotate(${angleSpring.get() + rotationOffset}deg) scaleX(-1)`
-                : `rotate(${angle + rotationOffset}deg) scaleX(-1)`,
+              transform: `rotate(${angle + rotationOffset}deg) scaleX(-1)`,
             }}
           />
         </React.Fragment>
