@@ -11,11 +11,10 @@ const Style = styled.div`
   .sliderHandle {
     width: 50%;
     pointer-events: all;
-    position: static;
+    position: absolute;
     left: 50%;
     top: 50%;
     transform-origin: 0 50%;
-    background: #bada55;
     &:after {
       content: '';
       display: block;
